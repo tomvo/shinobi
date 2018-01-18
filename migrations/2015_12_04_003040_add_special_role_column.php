@@ -11,6 +11,8 @@ class AddSpecialRoleColumn extends Migration
      */
     public function up()
     {
+        if (Schema::hasColumn('roles', 'special')) return;
+
         Schema::table('roles', function ($table) {
             $table->enum('special', ['all-access', 'no-access'])->nullable();
         });

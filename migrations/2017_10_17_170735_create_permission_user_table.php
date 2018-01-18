@@ -8,6 +8,8 @@ class CreatePermissionUserTable extends Migration
 {
     public function up()
     {
+        if (Schema::hasTable('permission_user')) return;
+            
         Schema::create('permission_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('permission_id')->unsigned()->index();

@@ -12,6 +12,8 @@ class CreateRoleUserTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('role_user')) return;
+            
         Schema::create('role_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('role_id')->unsigned()->index();
